@@ -228,7 +228,8 @@
                     <button
                         type="button"
                         wire:click="process"
-                        wire:loading.attr="disabled"
+                        {{-- Not wire:loading.attr="disabled": Livewire restores the attribute it saw when loading began, which would keep the button disabled after the first upload. --}}
+                        wire:loading.class="pointer-events-none opacity-70"
                         wire:target="process, uploads"
                         @disabled(! $available || ! $files || $missing > 0)
                         class="inline-flex h-14 w-full items-center justify-center gap-[9px] rounded-xl bg-accent px-7 text-[16.5px] font-bold text-white hover:bg-accent-dark disabled:cursor-not-allowed disabled:bg-accent-faded"
